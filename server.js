@@ -3,6 +3,7 @@
 
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
 const dotenv = require('dotenv')
 dotenv.config()
@@ -12,6 +13,8 @@ const SECRET_KEY = process.env.SECRET_KEY
 // Set your secret key. Remember to switch to your live secret key in production!
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 const stripe = require('stripe')(SECRET_KEY)
+
+app.use(cors())
 
 // middleware
 app.use(express.json())
