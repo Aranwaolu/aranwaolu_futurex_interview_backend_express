@@ -20,6 +20,11 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded())
 
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*')
+	next()
+})
+
 app.post('/create-checkout-session', async (req, res) => {
 	// In creating the line items array below, one might want to check with the database or api endpoint
 	// where the products and their prices are, to validate the price coming from the frontend
